@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coca-Cola Product Distribution</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body class="font-sans antialiased text-gray-800">
+
+  <!-- Navbar -->
+  <header>
+    <nav id="navbar" class="navbar transparent text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold">Coca-Cola</div>
+        <ul class="flex space-x-6">
+          <li><a href="#home" class="hover:text-gray-300">Home</a></li>
+          <li><a href="#about" class="hover:text-gray-300">About</a></li>
+          <li><a href="#product" class="hover:text-gray-300">Product</a></li>
+          <li><a href="#product" class="hover:text-gray-300">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+<!-- Home Section -->
+<section id="home" class="h-screen text-white flex items-center justify-center" style="background-image: url('image/Gambar\ Home.jpg'); background-size: cover; background-position: center;">
+<!-- Overlay dengan efek blur -->
+<div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+<div class="text-center relative z-10">
+  <!-- Judul dengan efek bayangan -->
+  <h1 class="text-5xl font-extrabold mb-4 text-white drop-shadow-lg">Welcome to Coca-Cola</h1>
+  <!-- Subjudul dengan efek bayangan -->
+  <p class="text-xl font-light text-white drop-shadow-md">We Ship your Cola like a Treasure</p>
+</div>
+</section>
+
+<section id="about" class="py-16 bg-gray-100">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold mb-4 text-center">About Us</h2>
+    <div class="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-8">
+      
+      <!-- Teks About -->
+      <div class="md:w-1/2 text-center md:text-left">
+        <p class="text-lg text-gray-700">
+          Welcome to the Coca-Cola! Since 1886, Coca-Cola has been commited to delivering world's most refreshing cola products, created by Atlanta pharmacist Dr. John Stith Pemberton. Originally formulated as a health tonic, Coca-Cola quickly evolved into a globally beloved beverage. Under the leadership of Asa Griggs Candler, our company expanded rapidly, transforming Coca-Cola from a small apothecary delight into an internationally recognized brand. Today, our focus remains on delivering high-quality cola products and ensuring the best experience with every sip. At Coca-Cola, We’re proud to bring a taste of refreshment to people around the world. 
+        </p>
+      </div>
+      
+      <!-- Carousel untuk gambar -->
+      <div class="md:w-1/2 relative">
+        <div class="carousel-container relative overflow-hidden w-full h-64">
+          <!-- Gambar 1 -->
+          <img src="image/Gambar About 1.jpg" alt="About Coca Cola 1" class="carousel-image absolute inset-0 w-full h-full object-cover rounded-lg opacity-0 transition-opacity duration-1000">
+          <!-- Gambar 2 -->
+          <img src="image/Gambar About 2.jpg" alt="About Coca Cola 2" class="carousel-image absolute inset-0 w-full h-full object-cover rounded-lg opacity-0 transition-opacity duration-1000">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Product Section -->
+<section id="product" class="py-16">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-10">Our Products</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      
+      <!-- Product Card 1 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <!-- Gambar produk -->
+        <img src="image/Coca-Cola.webp" alt="Product 1" class="h-40 w-full object-cover rounded mb-4">
+        <h3 class="text-xl font-semibold mb-2">Coca-Cola</h3>
+        <p class="text-lg font-medium text-gray-500 mb-4">$15.99/box</p>
+        <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" onclick="openModal('Coca-Cola', 15.99)">Order Now</button>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <img src="image/FANTA.webp" alt="Product 2" class="h-40 w-full object-cover rounded mb-4">
+        <h3 class="text-xl font-semibold mb-2">FANTA</h3>
+        <p class="text-lg font-medium text-gray-500 mb-4">$12.99/box</p>
+        <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" onclick="openModal('FANTA', 12.99)">Order Now</button>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+        <img src="image/Sprite.webp" alt="Product 3" class="h-40 w-full object-cover rounded mb-4">
+        <h3 class="text-xl font-semibold mb-2">Sprite</h3>
+        <p class="text-lg font-medium text-gray-500 mb-4">$13.99/box</p>
+        <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" onclick="openModal('Sprite', 13.99)">Order Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Modal 1 - Order Details -->
+ <div id="modal" class="modal flex">
+  <div class="modal-content">
+    <h3 id="modal-product-name" class="text-2xl font-bold mb-4"></h3>
+    <p class="mb-2">Price per package: $<span id="modal-product-price"></span></p>
+    <label for="quantity" class="block text-lg mb-2">Quantity:</label>
+    <input type="number" id="quantity" class="border p-2 w-full mb-4" value="1" min="1" onchange="updateTotal()">
+    <p>Total: $<span id="total-price"></span></p>
+    <div class="mt-4">
+      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" onclick="openPaymentModal()">Confirm</button>
+      <button class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 2 - Payment Options -->
+<div id="paymentModal" class="modal flex">
+  <div class="modal-content">
+    <h3 class="text-2xl font-bold mb-4">Choose Payment Method</h3>
+    <button class="bg-gray-200 text-black px-4 py-2 rounded w-full my-2" onclick="confirmTransaction('Cash')">Cash</button>
+    <button class="bg-gray-200 text-black px-4 py-2 rounded w-full my-2" onclick="confirmTransaction('Credit Card')">Credit Card</button>
+    <button class="bg-gray-200 text-black px-4 py-2 rounded w-full my-2" onclick="confirmTransaction('Debit')">Debit</button>
+    <button class="bg-gray-200 text-black px-4 py-2 rounded w-full my-2" onclick="confirmTransaction('PayPal')">PayPal</button>
+  </div>
+</div>
+
+<!-- Modal 3 - Transaction Success -->
+<div id="successModal" class="modal flex">
+  <div class="modal-content">
+    <h3 class="text-2xl font-bold mb-4">Transaction Successful!</h3>
+    <p>Thank you for your purchase.</p>
+    <button class="bg-red-600 text-white px-4 py-2 rounded mt-4" onclick="closeAllModals()">Close</button>
+  </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-8">
+      <div class="container mx-auto text-center">
+        <p class="mb-4">&copy; 2024 Coca-Cola. All rights reserved.</p>
+        <div class="space-y-2">
+          <p>Email: <a href="mailto:info@cocacola.com" class="text-red-400 hover:underline">info@cocacola.com</a></p>
+          <p>Address: 123 Cola St, Beverage City</p>
+        </div>
+      </div>
+    </footer>
+
+    <!--Javascript-->
+    <script src="script.js"></script>
+</body>
+</html>
